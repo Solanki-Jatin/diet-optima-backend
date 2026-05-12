@@ -16,8 +16,11 @@ import io
 app = Flask(__name__)
 
 # ── CORS: allow ALL origins (fixes "client failed to fetch" in Chrome) ────────
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
-
+CORS(app, resources={r"/*": {"origins": [
+    "http://localhost:*",
+    "https://*.web.app",
+    "https://*.firebaseapp.com"
+]}}, supports_credentials=False)
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY_HERE")
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
