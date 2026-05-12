@@ -21,7 +21,7 @@ CORS(app, resources={r"/*": {"origins": [
     "https://*.web.app",
     "https://*.firebaseapp.com"
 ]}}, supports_credentials=False)
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY_HERE")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AlzaSyAxb8KlzjvhjxvSdHgJgrY4QbRAKGQ_BDQ")
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
@@ -129,7 +129,7 @@ def analyze_meal():
         return jsonify({}), 200
 
     # ── Demo mode: if no Gemini key set, return dummy ──
-    if GEMINI_API_KEY in ("YOUR_GEMINI_API_KEY_HERE", "", None):
+    if GEMINI_API_KEY in ("AlzaSyAxb8KlzjvhjxvSdHgJgrY4QbRAKGQ_BDQ", "", None):
         return jsonify({"success": True, "data": get_dummy_result(), "demo": True})
 
     try:
